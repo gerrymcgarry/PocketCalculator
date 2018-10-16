@@ -29,6 +29,15 @@ class Calculator  {
         this.display = "0";
         updateDisplay();
     };
+    plusMinus() { 
+        if (this.display !== '0') {
+            if (this.display[0] !== '-') {
+                this.display = "-".concat(this.display);
+            } else {
+                this.display = this.display.substring(1, this.display.length);
+            }
+        }
+    };
     number(el) {
         if (this.display.length < 8) {
             if (this.display !== "0") {
@@ -56,13 +65,5 @@ class Calculator  {
 
     // To Do
     percent() {console.log("%");};
-    plusMinus() { 
-        if (this.display !== '0') {
-            if (this.display[0] !== '-') {
-                this.display = "-".concat(this.display);
-            } else {
-                this.display = this.display.substring(1, this.display.length);
-            }
-        }
-    };
+
 }
