@@ -15,7 +15,8 @@ class Calculator  {
 
     equals() {
         calculator[calculator.function](parseFloat(calculator.display));
-        calculator.display = calculator.firstNumber;
+        this.firstNumber = 0;
+        this.function = ""; 
     }
 
     // Single Functions
@@ -65,10 +66,10 @@ class Calculator  {
      };
     }
     // Double functions
-    multiply(secondNumber) { this.firstNumber = this.firstNumber * secondNumber; };
-    divide(secondNumber) { this.firstNumber = this.firstNumber / secondNumber; };
-    subtract(secondNumber) { this.firstNumber -= secondNumber; };
-    add(secondNumber) { this.firstNumber += secondNumber; };
-    pow(secondNumber) { this.firstNumber = Math.pow(this.firstNumber, secondNumber); };
-    mod(secondNumber) { this.firstNumber = this.firstNumber % secondNumber; };  
+    multiply(secondNumber) { this.display = this.firstNumber * secondNumber; };
+    divide(secondNumber) { this.display = this.firstNumber / secondNumber; };
+    subtract(secondNumber) { this.display = this.firstNumber - secondNumber; };
+    add(secondNumber) { this.display = this.firstNumber + secondNumber; };
+    pow(secondNumber) { this.display = Math.pow(this.firstNumber, secondNumber); };
+    mod(secondNumber) { this.display = this.firstNumber % secondNumber; };  
 }
