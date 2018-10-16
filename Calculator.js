@@ -9,7 +9,7 @@ class Calculator  {
     updateDisplay() { displayScreen.textContent = calculator.display; } 
 
     updateDisplay2(value) {
-        calculator.display = value;
+        this.display = value;
         displayScreen.textContent = calculator.display;
     } 
 
@@ -26,13 +26,25 @@ class Calculator  {
     memoryClear() { this.memory = 0;};
     play() { document.getElementById("audio").play(); };
 
-    sin(number) { this.display = Math.round(Math.sin(number) * 10000000) / 10000000; };
-    cos(number) { this.display = Math.round(Math.cos(number) * 10000000) / 10000000; };
-    tan(number) { this.display = Math.round(Math.tan(number) * 10000000) / 10000000; ;};
+    sin(number) { this.display = Math.round(Math.sin(number*Math.PI/180) * 10000000) / 10000000; };
+    cos(number) { this.display = Math.round(Math.cos(number*Math.PI/180) * 10000000) / 10000000; };
+    tan(number) { this.display = Math.round(Math.tan(number*Math.PI/180) * 10000000) / 10000000; ;};
+    asin(number) { this.display = Math.round(Math.asin(number)*(180/Math.PI) * 10000000) / 10000000; };
+    acos(number) { this.display = Math.round(Math.acos(number)*(180/Math.PI) * 10000000) / 10000000; };
+    atan(number) { this.display = Math.round(Math.atan(number)*(180/Math.PI) * 10000000) / 10000000; ;};
     log(number) { this.display = Math.round(Math.log10(number) * 10000000) / 10000000; };
+    ln(number) { this.display = Math.round(Math.log(number) * 10000000) / 10000000; };
     sqr(number) { this.display = Math.round(Math.sqrt(number) * 10000000) / 10000000; };
     exp(number) { this.display = Math.round(Math.exp(number) * 10000000) / 10000000; };
     percent(number) { this.display = Math.round(this.display * 100000) / 10000000; };
+    fac(number) {
+        if (number === 0 || number === 1)
+          return 1;
+        for (var i = number - 1; i >= 1; i--) {
+          number *= i;
+        }
+        this.display =  number;
+      }
     pi() {  this.updateDisplay2("3.14158926");};
     clear() { this.updateDisplay2("0"); };
     clearAll() {            
