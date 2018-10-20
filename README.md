@@ -10,6 +10,7 @@ https://gerrymcgarry.github.io/pcalc/
 * To work on smartphones, tablets and desktop browsers.
 * To be installable onto the home screen.
 * To work offline using service workers.
+* By pressing down a special key, It plays a little melody
 
 ## To Do
 * Test in more browsers and devices
