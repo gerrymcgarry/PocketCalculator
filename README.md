@@ -14,7 +14,6 @@ https://gerrymcgarry.github.io/pcalc/
 
 ## To Do
 * Test in more browsers and devices
-* Add another row of buttons
 * Improve layout
 * Fix bugs
 
