@@ -13,6 +13,7 @@ https://gerrymcgarry.github.io/pcalc/
 * By pressing down a special key, It plays a little melody
 
 ## To Do
+* Keep display to 10 digits
 * Test in more browsers and devices
 * Improve layout
 * Fix bugs
