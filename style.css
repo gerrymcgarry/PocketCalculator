@@ -51,8 +51,8 @@ h2 {
 #screen {
     margin: 0px 10px 10px 10px;
     background-color: #EDDF67;
-    border: dashed 2px white;
-    padding: 0px 10px 10px 0px;
+    border: solid 1px black;
+    padding: 0px 10px 10px 10px;
     border-radius: 15px;
     height:60px;
     text-align: right;
