@@ -4,31 +4,34 @@ class Calculator  {
         this.firstNumber = 0;
         this.memory = 0;
         this.function = "";
+        this.answer = false;
         this.screen = document.getElementById('display');
     }
-    updateDisplay() { displayScreen.textContent = calculator.display; } 
 
-    updateDisplay2(value) {
-        this.display = value;
-        displayScreen.textContent = calculator.display;
+    updateDisplay(value) {
+        if (value) {
+            this.display = value;
+        }
+        displayScreen.textContent = this.display;
     } 
 
     equals() {
-        calculator[calculator.function](parseFloat(calculator.display));
+        this.display = this[this.function](parseFloat(this.display));
         this.firstNumber = 0;
         this.function = ""; 
+        this.answer = true;
     }
 
-    // Single Functions
+    // Functions
     memoryRecall() { this.display = this.memory;  this.updateDisplay(); };
     memoryPlus() { this.memory += parseFloat(this.display); };
     memoryMinus() { this.memory -= parseFloat(this.display); };
     memoryClear() { this.memory = 0;};
     play() {  document.getElementById("audio").play(); window.location.reload(true); };
 
-    sin(number) { this.display = Math.round(Math.sin(number*Math.PI/180) * 10000000) / 10000000; };
-    cos(number) { this.display = Math.round(Math.cos(number*Math.PI/180) * 10000000) / 10000000; };
-    tan(number) { this.display = Math.round(Math.tan(number*Math.PI/180) * 10000000) / 10000000; ;};
+    sin(number) { this.display = Math.sin(number*Math.PI/180).toPrecision(9); };
+    cos(number) { this.display = Math.cos(number*Math.PI/180).toPrecision(9); };
+    tan(number) { this.display = Math.tan(number*Math.PI/180).toPrecision(9); ;};
     asin(number) { this.display = Math.round(Math.asin(number)*(180/Math.PI) * 10000000) / 10000000; };
     acos(number) { this.display = Math.round(Math.acos(number)*(180/Math.PI) * 10000000) / 10000000; };
     atan(number) { this.display = Math.round(Math.atan(number)*(180/Math.PI) * 10000000) / 10000000; ;};
@@ -45,12 +48,21 @@ class Calculator  {
         }
         this.display =  number;
       }
-    pi() {  this.updateDisplay2("3.14158926");};
-    clear() { this.updateDisplay2("0"); };
+    pi() {  this.updateDisplay("3.14158926");};
+
+    backspace() { 
+        if (this.display.length != 1) {
+            this.display = this.display.substring(0, this.display.length - 1); 
+        } else if (this.display !== "0") {
+            this.display = "0";
+        };
+    }
+
+    clear() { this.updateDisplay("0"); };
     clearAll() {            
         this.firstNumber = 0;
         this.function = ""; 
-        this.updateDisplay2("0");
+        this.updateDisplay("0");
     };
     plusMinus() { 
         if (this.display !== '0') {
@@ -62,26 +74,28 @@ class Calculator  {
         }
     };
     number(el) {
-        if (this.display.length < 8) {
-            if (this.display !== "0") {
-                this.display += el.textContent;
-            } else {
-                this.display = el.textContent;
+
+        if (this.answer === false) {
+            console.log(this.display);
+            if (this.display.length < 10) {
+                if (this.display !== "0") {
+                    this.display += el.textContent;
+                } else {
+                    this.display = el.textContent; 
+                }
             }
-        this.updateDisplay();
+        } else {
+            this.display = el.textContent;
+            this.answer = false;
         }
+        this.updateDisplay();
     }
-    backspace() { if (this.display.length != 1) {
-        this.display = this.display.substring(0, this.display.length - 1); 
-    } else if (this.display !== "0") {
-        this.display = "0";
-     };
-    }
-    // Double functions
-    multiply(secondNumber) { this.display = this.firstNumber * secondNumber; };
-    divide(secondNumber) { this.display = this.firstNumber / secondNumber; };
-    subtract(secondNumber) { this.display = this.firstNumber - secondNumber; };
-    add(secondNumber) { this.display = this.firstNumber + secondNumber; };
-    pow(secondNumber) { this.display = Math.pow(this.firstNumber, secondNumber); };
-    mod(secondNumber) { this.display = this.firstNumber % secondNumber; };  
+   
+    // Operators
+    multiply(secondNumber) { return this.firstNumber * secondNumber; };
+    divide(secondNumber) { return this.firstNumber / secondNumber; };
+    subtract(secondNumber) { return this.firstNumber - secondNumber; };
+    add(secondNumber) { return this.firstNumber + secondNumber; };
+    pow(secondNumber) { return Math.pow(this.firstNumber, secondNumber); };
+    mod(secondNumber) { return this.firstNumber % secondNumber; };  
 }

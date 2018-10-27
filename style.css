@@ -49,19 +49,20 @@ h2 {
 }
 
 #screen {
-    margin: 0px 15px 10px 15px;
+    margin: 0px 10px 10px 10px;
     background-color: #EDDF67;
-    border: solid 2px black;
-    padding: 0px 10px 10px 10px;
+    border: dashed 2px white;
+    padding: 0px 10px 10px 0px;
     border-radius: 15px;
     height:60px;
     text-align: right;
     font-family: "DSEG14 Modern";
-    font-size: 18px;
+    font-size: 16px;
 }
 
 #display {
     margin-top:18px;
+    font-size: 36px;
 }
 
 #buttons {
@@ -225,7 +226,7 @@ button:active {
         margin: 0px 10px 10px 10px;
         background-color: #EDDF67;
         border: solid 2px black;
-        padding: 0px 10px 10px 10px;
+        padding: 0px 8px 10px 0px;
         border-radius: 15px;
         height: 60px;
         text-align: right;
