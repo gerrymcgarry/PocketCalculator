@@ -15,7 +15,6 @@ https://gerrymcgarry.github.io/pcalc/
 ## To Do
 * Keep display to 10 digits
 * Test in more browsers and devices
-* Improve layout
 * Fix bugs
 
 
